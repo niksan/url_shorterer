@@ -9,6 +9,7 @@ RSpec.describe UrlsController, type: :controller do
 
   describe 'POST create' do
     let(:json_payload) { { url: 'http://test.com' } }
+
     before(:example) do
       post :create, body: json_payload.to_json, as: :json
     end
@@ -33,9 +34,13 @@ RSpec.describe UrlsController, type: :controller do
     end
 
     context 'one request from one ip address' do
-      it 'should increment stat and return full url' do
+      it 'should increment stat' do
         count = UrlStat.where(url_id: url.id).count
         expect(count).to eq(1)
+      end
+
+      it 'should return full url' do
+        expect(response.body).to eq(url.full)
       end
     end
 
@@ -46,7 +51,7 @@ RSpec.describe UrlsController, type: :controller do
         get :show, { params: { id: url.short } }
       end
 
-      it 'should increment stat and return full url' do
+      it 'should increment stat' do
         count = UrlStat.where(url_id: url.id).count
         expect(count).to eq(1)
       end
@@ -61,7 +66,7 @@ RSpec.describe UrlsController, type: :controller do
         get :show, { params: { id: url.short } }
       end
 
-      it 'should increment stat and return full url' do
+      it 'should increment stat' do
         count = UrlStat.where(url_id: url.id).count
         expect(count).to eq(2)
       end

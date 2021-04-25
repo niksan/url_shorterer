@@ -15,7 +15,7 @@ RSpec.describe StatsController, type: :controller do
 
     context 'with 1 view' do
       before(:example) do
-        StatIncrementer.call(short_code: url.short, ip: ip_1)
+        create(:url_stat, url: url, ip: ip_1)
       end
 
       it 'should return 1 view' do
@@ -26,8 +26,8 @@ RSpec.describe StatsController, type: :controller do
 
     context 'with 2 views' do
       before(:example) do
-        StatIncrementer.call(short_code: url.short, ip: ip_1)
-        StatIncrementer.call(short_code: url.short, ip: ip_2)
+        create(:url_stat, url: url, ip: ip_1)
+        create(:url_stat, url: url, ip: ip_2)
       end
 
       it 'should return 2 views' do
