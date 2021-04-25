@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_064838) do
+ActiveRecord::Schema.define(version: 2021_04_25_135248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "url_stats", force: :cascade do |t|
+    t.integer "url_id"
+    t.string "ip"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["url_id", "ip"], name: "index_url_stats_on_url_id_and_ip", unique: true
+    t.index ["url_id"], name: "index_url_stats_on_url_id"
+  end
 
   create_table "urls", force: :cascade do |t|
     t.string "full"
