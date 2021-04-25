@@ -1,5 +1,5 @@
 class UrlCreator < ApplicationService
-  ATTEMPTS = 10
+  ATTEMPTS = 3
 
   def initialize(url:, short_url_generator:)
     @url = url
@@ -20,7 +20,7 @@ class UrlCreator < ApplicationService
     create_url
   # if we are already have the same short url
   rescue ActiveRecord::RecordInvalid
-    retry if @attempt_number <= ATTEMPTS
+    retry if @attempt_number < ATTEMPTS
   end
 
   def create_url
