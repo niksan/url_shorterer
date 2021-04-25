@@ -18,6 +18,7 @@ RSpec.describe StatsController, type: :controller do
       before(:example) do
         StatIncrementer.call(short_code: url.short, ip: ip_1)
       end
+
       it 'should return 1 view' do
         get :index, { params: { url_id: url.short } }
         expect(response.body).to eq('1')
@@ -29,6 +30,7 @@ RSpec.describe StatsController, type: :controller do
         StatIncrementer.call(short_code: url.short, ip: ip_1)
         StatIncrementer.call(short_code: url.short, ip: ip_2)
       end
+
       it 'should return 2 views' do
         get :index, { params: { url_id: url.short } }
         expect(response.body).to eq('2')
