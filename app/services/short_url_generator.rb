@@ -19,6 +19,6 @@ class ShortUrlGenerator < ApplicationService
   end
 
   def secret_string
-    url + Time.current.to_s
+    url + rand(999_999_999).to_s
   end
 end
