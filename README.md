@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Create short URL
 
-Things you may want to cover:
+```
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"url":"http://test.com"}' \
+  http://localhost:3000/urls
+```
 
-* Ruby version
+## Get full URL
+```
+# TODO
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Get stat
+```
+# TODO
+```
