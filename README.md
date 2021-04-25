@@ -11,10 +11,10 @@ curl --header "Content-Type: application/json" \
 
 ## Get full URL
 ```
-# TODO
+curl http://localhost:3000/urls/[short_part_here]
 ```
 
 ## Get stat
 ```
-# TODO
+curl http://localhost:3000/urls/[short_part_here]/stats
 ```
